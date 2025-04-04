@@ -16,3 +16,8 @@
 - [x] Record explanation of code
 - [x] Review Sprint 3
 - [x] Prepare for presentation
+
+- [ ] CourseCompass:
+- [ ] Create script to enable email push notifications
+- [ ] Process GMAILs application authentication
+- [ ] Embed GMAIL account's authorization code into code
