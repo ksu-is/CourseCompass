@@ -17,3 +17,5 @@
 - [X] Have edited and committed changes in a readme.md file in their repository in our Github organization.
 > The commits should show in Github. 
 - [X] Create a Project Road Map for CourseCompass project.
+
+#Sprint Two - CourseCompass
