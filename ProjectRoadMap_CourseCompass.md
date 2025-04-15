@@ -19,3 +19,5 @@
 - [X] Create a Project Road Map for CourseCompass project.
 
 #Sprint Two - CourseCompass
+- [X] Install Flask interdependecy in my computer.
+> This will enable the web accessability to CourseCompass.
