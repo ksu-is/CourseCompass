@@ -23,4 +23,5 @@
 > This will enable the web accessability to CourseCompass.
 - [X] Install a Flask Loging Module.
 > This module enables Login Users authentication.
-
+- [ ] Install Flask-sqlalchemy module.
+>This module will enable database management.
