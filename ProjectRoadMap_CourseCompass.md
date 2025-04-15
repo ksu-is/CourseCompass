@@ -25,3 +25,5 @@
 > This module enables Login Users authentication.
 - [ ] Install Flask-sqlalchemy module.
 >This module will enable database management.
+- [ ] Setup Flask Application.
+> Input Code to SetUp Flask
