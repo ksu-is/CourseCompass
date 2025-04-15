@@ -2,6 +2,7 @@
 - [X] Establish a GitHub account
 > Established GitHub Profile https://github.com/MMcGrath-ksu
 - [X] Join our class organization (KSU-IS) in Github by accepting the invite email.
+> Email invite accepted and access granted to KSU-IS https://github.com/ksu-is
 - [X] Explored at least one existing Python code base related to the topic of interest.
 >https://github.com/ksu-is/Grade-Calculator
 >
