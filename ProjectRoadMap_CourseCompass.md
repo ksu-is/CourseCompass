@@ -21,3 +21,6 @@
 #Sprint Two - CourseCompass
 - [X] Install Flask interdependecy in my computer.
 > This will enable the web accessability to CourseCompass.
+- [X] Install a Flask Loging Module.
+> This module enables Login Users authentication.
+
