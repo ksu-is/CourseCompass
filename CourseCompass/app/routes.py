@@ -55,4 +55,18 @@ def register():
         flash('Registration successful! Please log in.')
         return redirect(url_for('login'))
 
-    return render_template('register.html')
+@app.route('/add-grade', methods=['GET', 'POST'])
+@login_required
+def add_grade():
+    if request.method == 'POST':
+        course_name = request.form['course_name']
+        grade = float(request.form['grade'])
+
+        new_grade = Grade(course_name=course_name, grade=grade, user_id=current_user.id)
+        db.session.add(new_grade)
+        db.session.commit()
+
+        flash('Grade added successfully!')
+        return redirect(url_for('dashboard'))
+
+    return render_template('add_grade.html')
