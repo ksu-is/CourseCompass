@@ -36,3 +36,23 @@ def dashboard():
     grades = Grade.query.filter_by(user_id=current_user.id).all()
     return render_template('dashboard.html', grades=grades)
 
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+        
+        existing_user = User.query.filter_by(username=username).first()
+        if existing_user:
+            flash('Username already exists. Please choose another.')
+            return redirect(url_for('register'))
+
+        hashed_pw = generate_password_hash(password)
+        new_user = User(username=username, password=hashed_pw)
+        db.session.add(new_user)
+        db.session.commit()
+
+        flash('Registration successful! Please log in.')
+        return redirect(url_for('login'))
+
+    return render_template('register.html')
