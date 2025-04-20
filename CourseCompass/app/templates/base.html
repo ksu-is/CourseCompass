@@ -1,1 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}Grade Tracker{% endblock %}</title>
+</head>
+<body>
+    <nav>
+        <a href="{{ url_for('dashboard') }}">Dashboard</a>
+        <a href="{{ url_for('logout') }}">Logout</a>
+    </nav>
+    {% block content %}{% endblock %}
+</body>
+</html>
 
