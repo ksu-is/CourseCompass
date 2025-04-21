@@ -53,3 +53,4 @@
 - [X] 🎨 Apply Bootstrap styles to: Navigation bar, Forms, Grade list, Buttons
 - [X] 🧼 Clean and modernize layout
 - [X] 🛡 Integrated ADM roles
+- [X] 📬 Email notifications  
