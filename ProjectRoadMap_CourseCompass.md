@@ -45,3 +45,4 @@
 - [X] Edit/Delete buttons working
 - [X] Clean round-trip between pages
 - [X] Database changes reflected live
+- [X] Real-time average calculation  
