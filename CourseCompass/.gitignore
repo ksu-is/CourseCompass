@@ -1,0 +1,12 @@
+# Ignore Python cache files
+__pycache__/
+*.py[cod]
+
+# Ignore local database
+instance/grades.db
+
+# VS Code settings (optional)
+.vscode/
+
+# Ignore environment files if you ever create one
+.env
