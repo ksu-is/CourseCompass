@@ -1,8 +1,9 @@
-from flask import render_template, redirect, url_for, flash, request
-from flask_login import login_user, login_required, logout_user, current_user
-from app import app, db, login_manager
+from flask import render_template, redirect, url_for, request, flash
+from flask_login import login_user, logout_user, login_required, current_user
 from app.models import User, Grade
-from werkzeug.security import check_password_hash, generate_password_hash
+from app import db
+from app import mail  
+from flask_mail import 
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -76,6 +77,14 @@ def register():
         new_user = User(username=username, password=hashed_pw)
         db.session.add(new_user)
         db.session.commit()
+                # Send confirmation email after registration
+        msg = Message(
+            subject='Welcome to CourseCompass 🎓',
+            sender='your-email@example.com',  # use your configured sender email
+            recipients=[user.username + '@students.kennesaw.edu'],  # or any test email
+            body=f"Hi {user.username},\n\nThank you for registering at CourseCompass!"
+        )
+        mail.send(msg)
 
         flash('Registration successful! Please log in.')
         return redirect(url_for('login'))
