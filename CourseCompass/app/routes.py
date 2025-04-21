@@ -35,13 +35,30 @@ def logout():
 def dashboard():
     grades = Grade.query.filter_by(user_id=current_user.id).all()
 
-    # Calculate average
+    # Calculate numeric average
     if grades:
         avg = round(sum(g.grade for g in grades) / len(grades), 2)
+
+        # Convert to letter grade
+        def get_letter_grade(avg):
+            if avg >= 90:
+                return 'A'
+            elif avg >= 80:
+                return 'B'
+            elif avg >= 70:
+                return 'C'
+            elif avg >= 60:
+                return 'D'
+            else:
+                return 'F'
+
+        letter = get_letter_grade(avg)
     else:
         avg = None
+        letter = None
 
-    return render_template('dashboard.html', grades=grades, avg=avg)
+    return render_template('dashboard.html', grades=grades, avg=avg, letter=letter)
+
 
 
 @app.route('/register', methods=['GET', 'POST'])

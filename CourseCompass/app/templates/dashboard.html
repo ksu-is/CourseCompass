@@ -3,8 +3,9 @@
 {% block content %}
 <h2>Your Grades</h2>
 {% if avg is not none %}
-    <p><strong>Your Average Grade:</strong> {{ avg }}%</p>
+  <p><strong>Your Average Grade:</strong> {{ avg }}% ({{ letter }})</p>
 {% endif %}
+
 <ul>
     {% for grade in grades %}
       <li>
