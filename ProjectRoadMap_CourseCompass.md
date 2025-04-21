@@ -39,7 +39,7 @@
     - Templates (Folder)
 > This folder will allow file Retention and Management.
 
- ###Added Functionalities
+ **Added Functionalities**
 [X] Grade updated
 [X] Flash message shown
 [X] Edit/Delete buttons working
