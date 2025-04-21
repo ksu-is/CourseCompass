@@ -49,3 +49,6 @@
 - [X] Turn numeric average into a classic letter grade 🅰️🅱️
 - [X] Add color (e.g., green for A, yellow for C)
 - [X] Bold and Centered Average Grade percentage and letter grade
+- [X] 🔗 Add Bootstrap CDN to base.html
+- [X] 🎨 Apply Bootstrap styles to: Navigation bar, Forms, Grade list, Buttons
+- [X] 🧼 Clean and modernize layout 
