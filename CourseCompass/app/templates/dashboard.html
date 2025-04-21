@@ -2,10 +2,20 @@
 {% block title %}Dashboard{% endblock %}
 {% block content %}
 <h2>Your Grades</h2>
+{% if avg is not none %}
+    <p><strong>Your Average Grade:</strong> {{ avg }}%</p>
+{% endif %}
 <ul>
     {% for grade in grades %}
-    <li>{{ grade.course_name }}: {{ grade.grade }}</li>
+      <li>
+        {{ grade.course_name }}: {{ grade.grade }}%
+        [<a href="{{ url_for('edit_grade', grade_id=grade.id) }}">✏️ Edit</a>]
+        [<a href="{{ url_for('delete_grade', grade_id=grade.id) }}" onclick="return confirm('Are you sure you want to delete this grade?')">❌ Delete</a>]
+      </li>
+    {% else %}
+      <li>No grades added yet.</li>
     {% endfor %}
-</ul>
+  </ul>
+<p><a href="{{ url_for('add_grade') }}">Add a New Grade</a></p>
 {% endblock %}
 

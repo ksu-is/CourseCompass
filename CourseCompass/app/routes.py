@@ -34,7 +34,15 @@ def logout():
 @login_required
 def dashboard():
     grades = Grade.query.filter_by(user_id=current_user.id).all()
-    return render_template('dashboard.html', grades=grades)
+
+    # Calculate average
+    if grades:
+        avg = round(sum(g.grade for g in grades) / len(grades), 2)
+    else:
+        avg = None
+
+    return render_template('dashboard.html', grades=grades, avg=avg)
+
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
@@ -59,14 +67,59 @@ def register():
 @login_required
 def add_grade():
     if request.method == 'POST':
-        course_name = request.form['course_name']
-        grade = float(request.form['grade'])
+        course_name = request.form.get('course_name')
+        grade = request.form.get('grade')
 
-        new_grade = Grade(course_name=course_name, grade=grade, user_id=current_user.id)
-        db.session.add(new_grade)
-        db.session.commit()
+        if course_name and grade:
+            try:
+                new_grade = Grade(
+                    course_name=course_name,
+                    grade=float(grade),
+                    user_id=current_user.id
+                )
+                db.session.add(new_grade)
+                db.session.commit()
+                flash('Grade added successfully!')
+                return redirect(url_for('dashboard'))
+            except ValueError:
+                flash("Please enter a valid number for the grade.")
+                return redirect(url_for('add_grade'))
+        else:
+            flash("All fields are required.")
+            return redirect(url_for('add_grade'))
 
-        flash('Grade added successfully!')
+    return render_template('add_grade.html')
+
+
+@app.route('/edit-grade/<int:grade_id>', methods=['GET', 'POST'])
+@login_required
+def edit_grade(grade_id):
+    grade = Grade.query.get_or_404(grade_id)
+    if grade.user_id != current_user.id:
+        flash("You don't have permission to edit this grade.")
         return redirect(url_for('dashboard'))
+
+    if request.method == 'POST':
+        grade.course_name = request.form['course_name']
+        grade.grade = float(request.form['grade'])
+        db.session.commit()
+        flash('Grade updated successfully!')
+        return redirect(url_for('dashboard'))
+
+    return render_template('edit_grade.html', grade=grade)
+
+
+@app.route('/delete-grade/<int:grade_id>')
+@login_required
+def delete_grade(grade_id):
+    grade = Grade.query.get_or_404(grade_id)
+    if grade.user_id != current_user.id:
+        flash("You don't have permission to delete this grade.")
+        return redirect(url_for('dashboard'))
+
+    db.session.delete(grade)
+    db.session.commit()
+    flash('Grade deleted successfully.')
+    return redirect(url_for('dashboard'))
 
     return render_template('add_grade.html')
