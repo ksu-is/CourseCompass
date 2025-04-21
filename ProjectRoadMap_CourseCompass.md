@@ -48,3 +48,4 @@
 - [X] Real-time average calculation
 - [X] Turn numeric average into a classic letter grade 🅰️🅱️
 - [X] Add color (e.g., green for A, yellow for C)
+- [X] Bold and Centered Average Grade percentage and letter grade
