@@ -46,4 +46,5 @@
 - [X] Clean round-trip between pages
 - [X] Database changes reflected live
 - [X] Real-time average calculation
-- [X] Turn numeric average into a classic letter grade 🅰️🅱️ 
+- [X] Turn numeric average into a classic letter grade 🅰️🅱️
+- [X] Add color (e.g., green for A, yellow for C)
