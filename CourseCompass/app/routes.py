@@ -150,5 +150,3 @@ def delete_grade(grade_id):
     db.session.commit()
     flash('Grade deleted successfully.')
     return redirect(url_for('dashboard'))
-
-    return render_template('add_grade.html')
