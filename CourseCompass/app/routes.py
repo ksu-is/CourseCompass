@@ -4,6 +4,9 @@ from app.models import User, Grade
 from app import db
 from app import mail  
 from flask_mail import 
+from flask_mail import Message
+from werkzeug.security import generate_password_hash, check_password_hash
+from app import login_manager
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -81,8 +84,9 @@ def register():
         msg = Message(
             subject='Welcome to CourseCompass 🎓',
             sender='coursecompass@outlook.com',  # use your configured sender email
-            recipients=[user.username + '@students.kennesaw.edu'],  # or any test email
-            body=f"Hi {user.username},\n\nThank you for registering at CourseCompass!"
+            recipients=[new_user.username + '@students.kennesaw.edu'],
+body=f"Hi {new_user.username},\n\nThank you for registering at CourseCompass!"
+
         )
         mail.send(msg)
 
