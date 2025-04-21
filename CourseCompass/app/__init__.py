@@ -13,12 +13,12 @@ def create_app():
     app.config['SECRET_KEY'] = 'your-secret-key'
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///instance/grades.db'
 
-    # ✅ Email Config
-    app.config['MAIL_SERVER'] = 'smtp.gmail.com'
-    app.config['MAIL_PORT'] = 587
-    app.config['MAIL_USE_TLS'] = True
-    app.config['MAIL_USERNAME'] = 'your-email@gmail.com'
-    app.config['MAIL_PASSWORD'] = 'your-app-password'
+app.config['MAIL_SERVER'] = 'smtp.gmail.com'
+app.config['MAIL_PORT'] = 587
+app.config['MAIL_USE_TLS'] = True
+app.config['MAIL_USERNAME'] = 'michael.mcgrath.2024@gmail.com'  # your actual Gmail address
+app.config['MAIL_PASSWORD'] = 'fito inrw nvpr tadj'  # <- Paste the 16-char app password here
+
 
     db.init_app(app)
     login_manager.init_app(app)
