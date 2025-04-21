@@ -3,7 +3,6 @@ from flask_login import login_user, logout_user, login_required, current_user
 from app.models import User, Grade
 from app import db
 from app import mail  
-from flask_mail import 
 from flask_mail import Message
 from werkzeug.security import generate_password_hash, check_password_hash
 from app import login_manager
