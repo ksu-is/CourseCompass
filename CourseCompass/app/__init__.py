@@ -1,19 +1,11 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
-
-app = Flask(__name__)
-app.config['SECRET_KEY'] = 'your-secret-key'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///grades.db'
-
-db = SQLAlchemy(app)
-login_manager = LoginManager(app)
-login_manager.login_view = 'login'
-
-from app import routes
-
 from flask_mail import Mail
 
+db = SQLAlchemy()
+login_manager = LoginManager()
+login_manager.login_view = 'login'
 mail = Mail()
 
 def create_app():
@@ -21,7 +13,7 @@ def create_app():
     app.config['SECRET_KEY'] = 'your-secret-key'
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///instance/grades.db'
 
-    # Email config
+    # ✅ Email Config
     app.config['MAIL_SERVER'] = 'smtp.gmail.com'
     app.config['MAIL_PORT'] = 587
     app.config['MAIL_USE_TLS'] = True
@@ -29,7 +21,10 @@ def create_app():
     app.config['MAIL_PASSWORD'] = 'your-app-password'
 
     db.init_app(app)
+    login_manager.init_app(app)
     mail.init_app(app)
 
-    from app import routes
+    from app.routes import register_routes
+    register_routes(app)
+
     return app

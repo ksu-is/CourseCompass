@@ -80,7 +80,7 @@ def register():
                 # Send confirmation email after registration
         msg = Message(
             subject='Welcome to CourseCompass 🎓',
-            sender='your-email@example.com',  # use your configured sender email
+            sender='coursecompass@outlook.com',  # use your configured sender email
             recipients=[user.username + '@students.kennesaw.edu'],  # or any test email
             body=f"Hi {user.username},\n\nThank you for registering at CourseCompass!"
         )
