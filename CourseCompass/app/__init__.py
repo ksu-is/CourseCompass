@@ -15,11 +15,16 @@ login_manager.login_view = 'login'
 mail = Mail()
 
 def create_app():
-    app = Flask(__name__)
+    import os
+    app = Flask(__name__, instance_path=os.path.join(os.path.abspath(os.path.dirname(__file__)), '..', 'instance'))
+
 
     # Core Config
     app.config['SECRET_KEY'] = 'your-secret-key'
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///instance/grades.db'
+    import os
+    db_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'instance', 'grades.db')
+    app.config['SQLALCHEMY_DATABASE_URI'] = f"sqlite:///{os.path.abspath(db_path)}"
+
 
     # Email Config (from .env)
     app.config['MAIL_SERVER'] = 'smtp.gmail.com'
