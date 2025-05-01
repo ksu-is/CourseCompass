@@ -16,5 +16,10 @@ SPRINT 2
 ----------------------------------------------------------------------------------------------
 SPRINT 3
 - [x] Make presentation slide
+- [x] is_admin role integrated
+- [x] Admin-only dashboard with a user list
+- [x] Working admin creation script
+- [x] Updated base layout with role-specific UI
+- [x].bat launcher that opens the app in the browser
 ----------------------------------------------------------------------------------------------
 Final Presentation
