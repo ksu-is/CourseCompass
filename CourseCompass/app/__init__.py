@@ -27,16 +27,18 @@ def create_app():
 
 
     # Email Config (from .env)
-    app.config['MAIL_SERVER'] = 'smtp.gmail.com'
-    app.config['MAIL_PORT'] = 587
-    app.config['MAIL_USE_TLS'] = True
-    app.config['MAIL_USERNAME'] = os.getenv('MAIL_USERNAME')
-    app.config['MAIL_PASSWORD'] = os.getenv('MAIL_PASSWORD')
+    app.config['MAIL_SERVER'] = 'localhost'
+app.config['MAIL_PORT'] = 8025
+app.config['MAIL_USE_TLS'] = False
+app.config['MAIL_USE_SSL'] = False
+app.config['MAIL_USERNAME'] = None
+app.config['MAIL_PASSWORD'] = None
+app.config['MAIL_DEFAULT_SENDER'] = 'coursecompass@outlook.com'
 
-    # Initialize extensions
-    db.init_app(app)
-    login_manager.init_app(app)
-    mail.init_app(app)
+# Initialize extensions
+db.init_app(app)
+login_manager.init_app(app)
+mail.init_app(app)
 
     # Register routes
     from app.routes import register_routes
