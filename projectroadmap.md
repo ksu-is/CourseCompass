@@ -20,6 +20,6 @@ SPRINT 3
 - [x] Admin-only dashboard with a user list
 - [x] Working admin creation script
 - [x] Updated base layout with role-specific UI
-- [x].bat launcher that opens the app in the browser
+- [x] .bat launcher that opens the app in the browser
 ----------------------------------------------------------------------------------------------
 Final Presentation
